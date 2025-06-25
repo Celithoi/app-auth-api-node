@@ -7,12 +7,20 @@ const cors = require('cors');
 const fs = require('fs');
 const path = require('path');
 const db = require('./database'); // Importa nosso módulo de banco de dados
+const userRoutes = require('./routes/userRoutes');
 
 const app = express();
 // Configurações do Express
 // Permite requisições de qualquer origem (CORS)
 app.use(cors());
 app.use(express.json());
+
+// ==========================================================
+// REGISTRA AS ROTAS DA API
+// ==========================================================
+// Diz ao Express para usar o arquivo userRoutes para qualquer
+// requisição que comece com o prefixo '/api/users'
+app.use('/api/users', userRoutes);
 
 // Rota de teste
 
@@ -60,6 +68,10 @@ app.get('/init-db', async (req, res) => {
     res.status(500).json({ error: 'Falha ao inicializar o banco de dados.' });
   }
 });
+
+// ==========================================================
+// INICIALIZAÇÃO DO SERVIDOR
+// ==========================================================
 
 const PORT = process.env.PORT || 5000;
 
