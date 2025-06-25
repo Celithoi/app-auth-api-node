@@ -13,7 +13,9 @@ const pool = new Pool({
 
 // Evento para verificar se a conexão foi bem-sucedida
 pool.on('connect', () => {
-  console.log('Conexão com o banco de dados PostgreSQL estabelecida com sucesso!');
+  console.log(
+    'Conexão com o banco de dados PostgreSQL estabelecida com sucesso!',
+  );
 });
 
 // Evento para capturar erros de conexão
