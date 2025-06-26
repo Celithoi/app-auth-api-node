@@ -37,7 +37,7 @@ const userController = {
       // 'RETURNING *' nos devolve todos os dados do usuário recém-criado.
       // É uma boa prática não retornar o hash da senha.
       const { rows: newUser } = await db.query(
-        'INSERT INTO users (username, email, password) VALUES ($1, $2, $3) RETURNING id, username, email, created_at',
+        'INSERT INTO users (username, email, password_hash) VALUES ($1, $2, $3) RETURNING id, username, email, created_at',
         [username, email, passwordHash],
       );
       // 6. ENVIAR RESPOSTA DE SUCESSO

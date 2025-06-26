@@ -10,8 +10,13 @@ const db = require('./database'); // Importa nosso módulo de banco de dados
 const userRoutes = require('./routes/userRoutes');
 
 const app = express();
+
+// ==========================================================
+// Os "Middlewares" (Regras de Trânsito)
+// ==========================================================
 // Configurações do Express
 // Permite requisições de qualquer origem (CORS)
+
 app.use(cors());
 app.use(express.json());
 
@@ -20,6 +25,7 @@ app.use(express.json());
 // ==========================================================
 // Diz ao Express para usar o arquivo userRoutes para qualquer
 // requisição que comece com o prefixo '/api/users'
+
 app.use('/api/users', userRoutes);
 
 // Rota de teste
